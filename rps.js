@@ -36,4 +36,20 @@ function playRound(computerPlay, humanPlay, option) {
     return winner;
 }
 
-playRound(computerPlay, humanPlay, option);
+function game(n, playRound, computerPlay, humanPlay, option) {
+    let humScore = 0;
+    let compScore = 0;
+    for (let i = 0; i < n; i++) {
+        let winner = playRound(computerPlay, humanPlay, option);
+        if (winner == "Human") {
+            humScore++;
+        }
+        else if (winner == "Computer") {
+            compScore++;
+        }        
+    }
+    let message = humScore > compScore ? `Human won ${humScore} to ${compScore}!` : `Computer won ${compScore} to ${humScore}!`;
+    console.log(message);
+}
+
+game(5, playRound, computerPlay, humanPlay, option);
